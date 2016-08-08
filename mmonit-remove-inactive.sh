@@ -1,3 +1,4 @@
+#!/bin/bash
 #
 # remove-inactive-mmonit v1.0
 # David Mcanulty
