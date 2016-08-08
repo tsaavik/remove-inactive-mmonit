@@ -52,7 +52,7 @@ while read hostname_key hostname_value; read id_key id_value; read ipaddr_key ip
      printf 'status key: (%s) value: (%s)\n' "$status_key" "$status_value"
      ((i++))
   fi
-  curl ${silent} -b ${mmonit_cookie} -d id=${id_value} -d hostname=${hostname_value} -d monituser=${z_username} -d monitpassword=${z_password} ${mmonit_url}/admin/hosts/update
+  curl ${silent} -b ${mmonit_cookie} -d id=${id_value} -d monituser=${z_username} -d monitpassword=${z_password} ${mmonit_url}/admin/hosts/delete
 done < <(curl ${silent} -b ${mmonit_cookie} ${mmonit_url}/admin/hosts/list |python -mjson.tool |grep -B4 Inactive |grep -v "\-\-" |sed -e 's/"\|,//g')
 
 echo "$i inactive hosts removed"
